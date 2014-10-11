@@ -1,0 +1,16 @@
+.footer.batch {
+  margin: 0 -15px;
+  padding-left: 30px;
+}
+
+.batch {
+  h3 {
+    display: inline-block;
+
+    select {
+      display: inline-block;
+      width: 200px;
+      margin-left: 15px;
+    }
+  }
+}

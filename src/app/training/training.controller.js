@@ -1,36 +1,63 @@
 'use strict';
 
 angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
-  .controller('TrainingCtrl', function ($scope, Render) {
+  .controller('TrainingCtrl', function ($scope, $rootScope, Render) {
     console.log('stuff');
-    Render.render();
+    // Render.render();
 
-    $scope.transformations = [
+    $rootScope.transformations = [
         {
-            "method": "binarization",
-            "parameters": [
-                {
-                    "name": "threshold",
-                    "type": "integer",
-                    "default": "50"
-                },
-                {
-                    "name": "blur",
-                    "type": "boolean",
-                    "default": "true"
-                }
-            ]
+            "method": "gaussianBlur",
+            "displayName": "Gaussian Blur",
+            "parameters": {
+                // "blrSize": 10,
+            },
         },
         {
-            "method": "quantization"
+            "method": "noiseRemoval",
+            "displayName": "Noise Removal",
+            "parameters": {
+                // "kSize": ""
+            }
         },
         {
-            "method": "quantization2"
+            "method": "filterBackgroundNoise",
+            "displayName": "Filter Background Noise",
+            "parameters": {
+                // "subimageSize": 10,
+                // "varianceTreshold": 10
+            }
+        },
+        {
+            "method": "crop",
+            "displayName": "Crop",
+            "parameters": {
+                "top": 5,
+                "bottom": 5,
+                "left": 5,
+                "right": 5
+            }
         }
     ];
 
-    $scope.renderingPipeline = {};
-    $scope.renderingPipeline = {
+    $rootScope.analysisBlocks = [
+        {
+            "method": "vesselWidth",
+            "displayName": "Vessel Width",
+            "parameters": {
+                // "blrSize": 10,
+            },
+        },
+    ];
+
+                //     {
+                //     "name": "blur",
+                //     "type": "boolean",
+                //     "default": "true"
+                // }
+
+    $rootScope.renderingPipeline = {};
+    $rootScope.renderingPipeline = {
         "transformations": [
             {
                 "method":  "binarization",
@@ -48,40 +75,10 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
 
 
     $scope.refresh = function() {
-        Render.render();
+        Render.render($rootScope.renderingPipeline);
     }
 
     $scope.deleteTransformation = function(index) {
-        $scope.renderingPipeline.transformations.splice(index, 1);
+        $rootScope.renderingPipeline.transformations.splice(index, 1);
     }
-  })
-  .directive('resize', function ($window) {
-    return function (scope, element) {
-        var w = angular.element($window);
-        scope.getWindowDimensions = function () {
-            return {
-                'h': w.height(),
-                'w': w.width()
-            };
-        };
-        scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
-            scope.windowHeight = newValue.h;
-            scope.windowWidth = newValue.w;
-
-            element.css({height: ((newValue.h - 140 - 50) + 'px')});
-            /*
-            scope.style = function () {
-                console.log((newValue.h - 140) + 'px');
-                return {
-                    'height': (newValue.h - 140) + 'px'
-                };
-            };
-            */
-
-        }, true);
-
-        w.bind('resize', function () {
-            scope.$apply();
-        });
-    }
-});
+  });
