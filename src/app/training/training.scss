@@ -27,6 +27,11 @@
     height: 140px;
     background-color: #f5f5f5;
   }
+
+  .pipelineWrapper {
+    position: relative;
+    height: 140px;
+  }
 }
 
 .transformation {
@@ -57,6 +62,12 @@
 }
 
 .renderingPipeline {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  height: 90px;
+
   list-style-type: none;
   .transformation, .dndPlaceholder {
     margin-right: 40px;
@@ -85,7 +96,7 @@
   li::after {
     content: '\279E';    
     position: absolute;
-    left: 105px;
+    left: 107px;
     top: 20px;
     color: #fff;
     font: 30px bold;
@@ -127,7 +138,7 @@ ul[dnd-list], ul[dnd-list] > li {
 ul[dnd-list].renderingPipeline {
     display: block;
     min-width: 100px;
-    height: 100px;
+    // height: 100px;
     padding-left: 0px;
 }
 
@@ -175,3 +186,18 @@ ul[dnd-list].renderingPipeline li {
     -ms-user-select: none;
     user-select: none;
 }*/
+
+.datasetSelector {
+  text-align: center;
+  border-right: 1px solid #f9f9f9;
+  height: 100%;
+
+  select {
+    margin-top: 30px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

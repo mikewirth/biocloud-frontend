@@ -14,6 +14,11 @@ angular.module('biocloud', ['ngAnimate', 'ngResource', 'ui.router', 'biocloud.tr
         url: '/train',
         templateUrl: 'app/training/training.html',
         controller: 'TrainingCtrl'
+      })
+      .state('batch', {
+        url: '/batch',
+        templateUrl: 'app/batch/batch.html',
+        controller: 'BatchCtrl'
       });
   })
 ;

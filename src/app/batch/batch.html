@@ -1,0 +1,25 @@
+<div class="row batch">
+	<div class="jumbotron">
+
+	<!-- <div class="imageview" resize> -->
+	  <h3>Select your training set: 
+	  	<select class="form-control">
+	  		<option>-</option>
+	  		<option ng-repeat="batch in batches" value="{{batch.id}}" ng-click="selectDataset(batch.id)">{{batch.name}}</option>
+	  	</select>
+	  </h3>
+	</div>
+
+	
+
+<div class="footer patternbg">
+  <a ng-click="refresh()">Refresh image</a>
+  <ul class="renderingPipeline" dnd-list="renderingPipeline.transformations">
+    <li ng-repeat="transformation in renderingPipeline.transformations" class="transformation{{renderingPipeline.showUntil == $index + 1 ? ' active' : ''}}" dnd-draggable="transformation" dnd-effect-allowed="copyMove" dnd-moved="deleteTransformation($index)">
+      <span>Method: {{transformation.method}}</span>
+      <a ng-click="deleteTransformation($index)" class="delete"><i class="fa fa-times"></i></a>
+    </li>
+  </ul>
+</div>
+
+</div>

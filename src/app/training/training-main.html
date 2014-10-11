@@ -4,11 +4,19 @@
   </div>
 </div>
 <div class="footer patternbg">
-  <a ng-click="refresh()">Refresh image</a>
-  <ul class="renderingPipeline" dnd-list="renderingPipeline.transformations">
-    <li ng-repeat="transformation in renderingPipeline.transformations" class="transformation{{renderingPipeline.showUntil == $index + 1 ? ' active' : ''}}" dnd-draggable="transformation" dnd-effect-allowed="copyMove" dnd-moved="deleteTransformation($index)">
-      <span>Method: {{transformation.method}}</span>
-      <a ng-click="deleteTransformation($index)" class="delete"><i class="fa fa-times"></i></a>
-    </li>
-  </ul>
+  <div class="col-md-2 datasetSelector">
+    <select class="form-control">
+      <option>Select dataset</option>
+      <option ng-repeat="batch in batches" value="{{batch.id}}" ng-click="selectDataset(batch.id)">{{batch.name}}</option>
+    </select>
+    <a class="btn btn-default" ng-click="refresh()">Refresh image</a>
+  </div>
+  <div class="col-md-8 pipelineWrapper">
+    <ul class="renderingPipeline" dnd-list="renderingPipeline.transformations">
+      <li ng-repeat="transformation in renderingPipeline.transformations" class="transformation{{renderingPipeline.showUntil == $index + 1 ? ' active' : ''}}" dnd-draggable="transformation" dnd-effect-allowed="copyMove" dnd-moved="deleteTransformation($index)">
+        <span>Method: {{transformation.method}}</span>
+        <a ng-click="deleteTransformation($index)" class="delete"><i class="fa fa-times"></i></a>
+      </li>
+    </ul>
+  </div>
 </div>
