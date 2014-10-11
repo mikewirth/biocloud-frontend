@@ -68,7 +68,7 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
 
 
     $scope.refresh = function() {
-        Render.render($rootScope.renderingPipeline, $rootScope.selectedDataset);
+        Render.render($rootScope.renderingPipeline, $rootScope.fields.selectedDataset);
     }
 
     $scope.deleteTransformation = function(index) {

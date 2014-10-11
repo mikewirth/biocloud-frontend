@@ -19,10 +19,9 @@ angular.module('biocloudRender', [])
     renderService.render = function(actions, selectedDataset) {
       var params = {
         "actions": actions,
-        "selectedDataset": selectedDataset,
+        "selectedDataset": renderService.identifyBatch(selectedDataset).id,
         "showUntil": -1
       };
-      console.log(params);
 
       $http.post('http://ec2-54-77-212-190.eu-west-1.compute.amazonaws.com:5000/render', params, {responseType: 'blob'})
         .success(function(data, status, headers, config) {
@@ -38,7 +37,7 @@ angular.module('biocloudRender', [])
     renderService.batch = function(actions, selectedDataset) {
       var params = {
         "actions": actions,
-        "selectedDataset": selectedDataset
+        "selectedDataset": renderService.identifyBatch(selectedDataset).id
       };
 
       $http.post('http://ec2-54-77-212-190.eu-west-1.compute.amazonaws.com:5000/batch', params)
@@ -60,6 +59,14 @@ angular.module('biocloudRender', [])
           .error(function(data, status, headers, config) {
             // alert('There was an error rendering on the server.');
           });
+    }
+
+    renderService.identifyBatch = function(datasetName) {
+      for (var item in $rootScope.batches) {
+        if ($rootScope.batches[item].name == datasetName) {
+          return $rootScope.batches[item];
+        }
+      }
     }
 
     return renderService;
