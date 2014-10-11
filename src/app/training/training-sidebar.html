@@ -1,6 +1,6 @@
 <div class="sidebar patternbg">
   <ul class="transformationList">
-  	<li ng-repeat="transformation in transformations" class="transformation" draggable="true">
+  	<li ng-repeat="transformation in transformations" class="transformation" dnd-draggable="transformation" dnd-effect-allowed="copy" dnd-copied="">
   		Method: {{transformation.method}}
   	</li>
   </ul>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('biocloud.training', ['biocloudRender'])
+angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
   .controller('TrainingCtrl', function ($scope, Render) {
     console.log('stuff');
     Render.render();
@@ -49,6 +49,10 @@ angular.module('biocloud.training', ['biocloudRender'])
 
     $scope.refresh = function() {
         Render.render();
+    }
+
+    $scope.deleteTransformation = function(index) {
+        $scope.renderingPipeline.transformations.splice(index, 1);
     }
   })
   .directive('resize', function ($window) {
