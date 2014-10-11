@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('biocloud', ['ngAnimate', 'ngResource', 'ui.router', 'biocloud.training'])
+angular.module('biocloud', ['ngAnimate', 'ngResource', 'ui.router', 'biocloud.training', 'biocloudRender'])
   .config(function ($stateProvider, $urlRouterProvider) {
   	$urlRouterProvider.otherwise('/upload');
 
@@ -21,17 +21,24 @@ angular.module('biocloud', ['ngAnimate', 'ngResource', 'ui.router', 'biocloud.tr
       controller: 'BatchCtrl'
     });
   })
-  .run(function($rootScope) {
-    $rootScope.batches = [
-      {
-        "name": "Colon cell reproduction",
-        "id": "1"
-      },
-      {
-        "name": "Retina 3",
-        "id": "2"
-      }
-    ];
+  .run(function($rootScope, Render) {
+
+    $rootScope.fields = {
+      "selectedDataset": ""
+    };
+
+    // $rootScope.batches = [
+    //   {
+    //     "name": "Colon cell reproduction",
+    //     "id": "1"
+    //   },
+    //   {
+    //     "name": "Retina 3",
+    //     "id": "2"
+    //   }
+    // ];
+
+    Render.images();
 
     $rootScope.batchImages = {
       "1":

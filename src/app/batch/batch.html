@@ -3,11 +3,11 @@
 
 	<!-- <div class="imageview" resize> -->
 	  <h3>Select your training set: 
-	  	<select class="form-control" ng-model="$rootScope.selectedDataset">
+	  	<select class="form-control" ng-model="fields.selectedDataset">
 	  		<option value="">-</option>
-	  		<option ng-repeat="batch in batches" value="{{batch.id}}">{{batch.name}}</option>
+	  		<option ng-repeat="batch in batches">{{batch.name}}</option>
 	  	</select>
-	  	<a class="btn btn-primary" ng-click="startBatch()">Start batch evaluation</a>
+	  	<a class="btn btn-primary" ng-click="startBatch()">Start {{fields.selectedDataset}}batch evaluation</a>
 	  </h3>
 	  <div ng-include="'app/batch/batch-images.html'"></div>
 	</div>
@@ -15,8 +15,8 @@
 </div>
 
 <div class="footer patternbg batch">
-  <ul class="renderingPipeline" dnd-list="renderingPipeline.transformations">
-    <li ng-repeat="transformation in renderingPipeline.transformations" class="transformation{{renderingPipeline.showUntil == $index + 1 ? ' active' : ''}}" dnd-draggable="transformation" dnd-effect-allowed="copyMove" dnd-moved="deleteTransformation($index)">
+  <ul class="renderingPipeline" dnd-list="renderingPipeline">
+    <li ng-repeat="transformation in renderingPipeline" class="transformation{{renderingPipeline.showUntil == $index + 1 ? ' active' : ''}}" dnd-draggable="transformation" dnd-effect-allowed="copyMove" dnd-moved="deleteTransformation($index)">
       <span>Method: {{transformation.method}}</span>
       <a ng-click="deleteTransformation($index)" class="delete"><i class="fa fa-times"></i></a>
     </li>

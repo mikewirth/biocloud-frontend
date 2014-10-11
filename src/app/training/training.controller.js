@@ -12,13 +12,15 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
             "parameters": {
                 // "blrSize": 10,
             },
+            "type": "transformation"
         },
         {
             "method": "noiseRemoval",
             "displayName": "Noise Removal",
             "parameters": {
                 // "kSize": ""
-            }
+            },
+            "type": "transformation"
         },
         {
             "method": "filterBackgroundNoise",
@@ -26,7 +28,8 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
             "parameters": {
                 // "subimageSize": 10,
                 // "varianceTreshold": 10
-            }
+            },
+            "type": "transformation"
         },
         {
             "method": "crop",
@@ -36,7 +39,8 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
                 "bottom": 5,
                 "left": 5,
                 "right": 5
-            }
+            },
+            "type": "transformation"
         }
     ];
 
@@ -45,8 +49,9 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
             "method": "vesselWidth",
             "displayName": "Vessel Width",
             "parameters": {
-                // "blrSize": 10,
+                "pixelSize": 5,
             },
+            "type": "analysis"
         },
     ];
 
@@ -56,29 +61,17 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
                 //     "default": "true"
                 // }
 
-    $rootScope.renderingPipeline = {};
-    $rootScope.renderingPipeline = {
-        "transformations": [
-            {
-                "method":  "binarization",
-                "parameters": {
-                    "threshold": "500",
-                    "blur": "false"
-                }
-            },
-            {
-                "method":  "quantization"
-            }
-        ],
-        "showUntil": 1
-    };
+    // $rootScope.renderingPipeline = {};
+    $rootScope.renderingPipeline = [
+            
+        ];
 
 
     $scope.refresh = function() {
-        Render.render($rootScope.renderingPipeline);
+        Render.render($rootScope.renderingPipeline, $rootScope.selectedDataset);
     }
 
     $scope.deleteTransformation = function(index) {
-        $rootScope.renderingPipeline.transformations.splice(index, 1);
+        $rootScope.renderingPipeline.splice(index, 1);
     }
   });
