@@ -1,8 +1,13 @@
 'use strict';
 
-angular.module('biocloud')
-  .controller('TrainingCtrl', function ($scope) {
+angular.module('biocloud.training', ['biocloudRender'])
+  .controller('TrainingCtrl', function ($scope, Render) {
     console.log('stuff');
+    Render.render();
+
+    $scope.refresh = function() {
+        Render.render();
+    }
   })
   .directive('resize', function ($window) {
     return function (scope, element) {

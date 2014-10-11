@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('biocloud', ['ngAnimate', 'ngResource', 'ui.router'])
+angular.module('biocloud', ['ngAnimate', 'ngResource', 'ui.router', 'biocloud.training'])
   .config(function ($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/upload');
 
