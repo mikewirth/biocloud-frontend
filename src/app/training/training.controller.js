@@ -5,6 +5,48 @@ angular.module('biocloud.training', ['biocloudRender'])
     console.log('stuff');
     Render.render();
 
+    $scope.transformations = [
+        {
+            "method": "binarization",
+            "parameters": [
+                {
+                    "name": "threshold",
+                    "type": "integer",
+                    "default": "50"
+                },
+                {
+                    "name": "blur",
+                    "type": "boolean",
+                    "default": "true"
+                }
+            ]
+        },
+        {
+            "method": "quantization"
+        },
+        {
+            "method": "quantization2"
+        }
+    ];
+
+    $scope.renderingPipeline = {};
+    $scope.renderingPipeline = {
+        "transformations": [
+            {
+                "method":  "binarization",
+                "parameters": {
+                    "threshold": "500",
+                    "blur": "false"
+                }
+            },
+            {
+                "method":  "quantization"
+            }
+        ],
+        "showUntil": 1
+    };
+
+
     $scope.refresh = function() {
         Render.render();
     }
