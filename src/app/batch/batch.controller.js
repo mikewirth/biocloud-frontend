@@ -25,8 +25,8 @@ angular.module('biocloud')
   };
   console.log($scope);
   // Get the context of the canvas element we want to select
-  // var ctx = document.getElementById("testchart2").getContext("2d");
-  // var myNewChart = new Chart(ctx).Line(data);
+  var ctx = document.getElementById("testchart2").getContext("2d");
+  var myNewChart = new Chart(ctx).Line(data);
   // $scope.testchart.data = data;
 
     $scope.startBatch = function() {

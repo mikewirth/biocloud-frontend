@@ -30,7 +30,7 @@ angular.module('biocloudRender', [])
             //$window.URL.revokeObjectURL(imgSrc);
           })
       .error(function(data, status, headers, config) {
-            // alert('There was an error rendering on the server.');
+            alert('There was an error rendering on the server.');
           });
     };
 
@@ -46,7 +46,7 @@ angular.module('biocloudRender', [])
             //$window.URL.revokeObjectURL(imgSrc);
           })
           .error(function(data, status, headers, config) {
-            // alert('There was an error rendering on the server.');
+            alert('There was an error on the server.');
           });
       return promise;
     }

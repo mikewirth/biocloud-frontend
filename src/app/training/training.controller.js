@@ -53,12 +53,6 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
             "type": "transformation"
         },
         {
-            "method": "watershed",
-            "displayName": "Watershed",
-            "parameters": {},
-            "type": "transformation"
-        },
-        {
             "method": "cellSegmentation",
             "displayName": "Cell Segmentation",
             "parameters": {},
@@ -77,7 +71,7 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
         },
         {
             "method": "edge_detection",
-            "displayName": "Edge Detection",
+            "displayName": "Vessel Detection",
             "parameters": {
                 // "subimageSize": 10,
                 // "varianceTreshold": 10

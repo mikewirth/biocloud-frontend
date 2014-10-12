@@ -7,7 +7,6 @@
   <ul class="renderingPipeline" dnd-list="renderingPipeline.transformations">
     <li ng-repeat="transformation in renderingPipeline.transformations" class="transformation{{renderingPipeline.showUntil == $index + 1 ? ' active' : ''}}" dnd-draggable="transformation" dnd-effect-allowed="copyMove" dnd-moved="deleteTransformation($index)">
       <span>{{transformation.displayName}}</span>
-      <a ng-click="deleteTransformation($index)" class="delete"><i class="fa fa-times"></i></a>
     </li>
   </ul>
 </div>
