@@ -62,10 +62,10 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
             "method": "CropTool",
             "displayName": "Crop",
             "parameters": {
-                "top": 5,
-                "bottom": 5,
-                "left": 5,
-                "right": 5
+                "top": 28,
+                "bottom": 35,
+                "left": 0,
+                "right": 0
             },
             "type": "transformation"
         },
@@ -85,7 +85,7 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
             "method": "vesselWidth",
             "displayName": "Vessel Width",
             "parameters": {
-                "pixelSize": 5,
+                "pixelSize": 1,
             },
             "type": "analysis"
         },
