@@ -1,4 +1,5 @@
 <div class="row">
-	My Chart
-	<chart value="myChart"></chart>
+	<div ng-if="mode == 'results'">Average diameter over dataset: {{resultData.average.diameter}}</div>
+	<!-- <chart value="myChart"></chart> -->
+	<canvas id="testchart3" width="650" height="350"></canvas>
 </div>

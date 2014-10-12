@@ -26,6 +26,19 @@
     img {
       
     }
+    .message {
+      color: #fff;
+      border: 1px dashed #fff;
+      width: 400px;
+      height: 300px;
+      margin: 0 auto;
+      display: table;
+      
+      span {
+        vertical-align: middle;
+        display: table-cell;
+      }
+    }
   }
 
   .pipelineWrapper {

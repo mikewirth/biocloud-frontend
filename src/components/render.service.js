@@ -63,11 +63,8 @@ angular.module('biocloudRender', [])
     }
 
     renderService.identifyBatch = function(datasetName) {
-      console.log(datasetName);
       for (var item in $rootScope.batches) {
         if ($rootScope.batches[item].name == datasetName) {
-          console.log("success");
-          console.log($rootScope.batches[item]);
           return $rootScope.batches[item];
         }
       }

@@ -32,7 +32,40 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
             "type": "transformation"
         },
         {
-            "method": "crop",
+            "method": "removeHoles",
+            "displayName": "Remove Holes",
+            "parameters": {
+                // "subimageSize": 10,
+                // "varianceTreshold": 10
+            },
+            "type": "transformation"
+        },
+        {
+            "method": "skeletonize",
+            "displayName": "Skeletonize",
+            "parameters": {},
+            "type": "transformation"
+        },
+        {
+            "method": "thresholding",
+            "displayName": "Thresholding",
+            "parameters": {},
+            "type": "transformation"
+        },
+        {
+            "method": "watershed",
+            "displayName": "Watershed",
+            "parameters": {},
+            "type": "transformation"
+        },
+        {
+            "method": "cellSegmentation",
+            "displayName": "Cell Segmentation",
+            "parameters": {},
+            "type": "transformation"
+        },
+        {
+            "method": "CropTool",
             "displayName": "Crop",
             "parameters": {
                 "top": 5,
@@ -41,7 +74,16 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
                 "right": 5
             },
             "type": "transformation"
-        }
+        },
+        {
+            "method": "edge_detection",
+            "displayName": "Edge Detection",
+            "parameters": {
+                // "subimageSize": 10,
+                // "varianceTreshold": 10
+            },
+            "type": "transformation"
+        },
     ];
 
     $rootScope.analysisBlocks = [
