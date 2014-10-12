@@ -62,9 +62,9 @@ angular.module('biocloud.training', ['biocloudRender', 'dndLists'])
                 // }
 
     // $rootScope.renderingPipeline = {};
-    $rootScope.renderingPipeline = [
-            
-        ];
+    if ($rootScope.renderingPipeline === undefined) {
+        $rootScope.renderingPipeline = [];
+    }
 
 
     $scope.refresh = function() {

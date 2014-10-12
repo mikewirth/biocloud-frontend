@@ -23,7 +23,7 @@ angular.module('biocloudRender', [])
         "showUntil": -1
       };
 
-      $http.post('http://ec2-54-77-212-190.eu-west-1.compute.amazonaws.com:5000/render', params, {responseType: 'blob'})
+      $http.post('http://ec2-54-72-186-15.eu-west-1.compute.amazonaws.com:5000/render', params, {responseType: 'blob'})
         .success(function(data, status, headers, config) {
           var imgSrc = URL.createObjectURL(data);
           document.getElementById('renderImage').src = imgSrc;
@@ -40,18 +40,19 @@ angular.module('biocloudRender', [])
         "selectedDataset": renderService.identifyBatch(selectedDataset).id
       };
 
-      $http.post('http://ec2-54-77-212-190.eu-west-1.compute.amazonaws.com:5000/batch', params)
+      var promise = $http.post('http://ec2-54-72-186-15.eu-west-1.compute.amazonaws.com:5000/batch', params)
           .success(function(data, status, headers, config) {
-            
+            return data;
             //$window.URL.revokeObjectURL(imgSrc);
           })
           .error(function(data, status, headers, config) {
             // alert('There was an error rendering on the server.');
           });
+      return promise;
     }
 
     renderService.images = function() {
-      $http.get('http://ec2-54-77-212-190.eu-west-1.compute.amazonaws.com:5000/imglist')
+      $http.get('http://ec2-54-72-186-15.eu-west-1.compute.amazonaws.com:5000/imglist')
           .success(function(data, status, headers, config) {
             $rootScope.batches = data.results;
             console.log($rootScope.batches);
@@ -62,8 +63,11 @@ angular.module('biocloudRender', [])
     }
 
     renderService.identifyBatch = function(datasetName) {
+      console.log(datasetName);
       for (var item in $rootScope.batches) {
         if ($rootScope.batches[item].name == datasetName) {
+          console.log("success");
+          console.log($rootScope.batches[item]);
           return $rootScope.batches[item];
         }
       }
